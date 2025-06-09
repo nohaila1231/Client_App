@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Favicon avec emoji cinéma -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#DC2626" />
+    
+    <!-- Métadonnées pour le SEO et les réseaux sociaux -->
+    <meta name="description" content="CinéSoul - Votre guide cinéma personnel. Découvrez, explorez et partagez votre passion pour les films." />
+    <meta name="keywords" content="cinéma, films, recommandations, critiques, watchlist" />
+    <meta name="author" content="CinéSoul" />
+    
+    <!-- Open Graph pour les réseaux sociaux -->
+    <meta property="og:title" content="🎬 CinéSoul - Votre Guide Cinéma" />
+    <meta property="og:description" content="Découvrez, explorez et partagez votre passion pour les films avec CinéSoul." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/cinesoul-og-image.jpg" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="🎬 CinéSoul - Votre Guide Cinéma" />
+    <meta name="twitter:description" content="Découvrez, explorez et partagez votre passion pour les films." />
+    
+    <title> CinéSoul</title>
+    
+    <!-- Polices Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles pour le chargement -->
+    <style>
+      /* Styles de chargement pour éviter le flash */
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #000000;
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+      
+      /* Animation de chargement */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      
+      .loading-logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+      
+      .loading-icon {
+        width: 3rem;
+        height: 3rem;
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+        animation: pulse 2s infinite;
+      }
+      
+      .loading-text {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #ffffff;
+      }
+      
+      .loading-text .accent {
+        color: #dc2626;
+      }
+      
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid #333;
+        border-top: 3px solid #dc2626;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Écran de chargement -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-logo">
+        <div class="loading-icon">
+          <!-- CORRECTION: Vraie icône de cinéma (clap de film) -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Clap de cinéma -->
+            <path d="M20 4L20.94 2.94L19.06 1.06L18 2.12L16.88 1L15.06 2.82L16.18 3.94L15.12 5L20 4Z" fill="white"/>
+            <path d="M15.12 5L14.06 6.06L15.18 7.18L16.24 6.12L15.12 5Z" fill="white"/>
+            <path d="M13.06 7.06L12 8.12L13.12 9.24L14.18 8.18L13.06 7.06Z" fill="white"/>
+            <path d="M11 9.12L9.94 10.18L11.06 11.3L12.12 10.24L11 9.12Z" fill="white"/>
+            <path d="M8.94 11.18L7.88 12.24L9 13.36L10.06 12.3L8.94 11.18Z" fill="white"/>
+            <path d="M2 6V20C2 21.1 2.9 22 4 22H20C21.1 22 22 21.1 22 20V6H2ZM20 20H4V8H20V20Z" fill="white"/>
+            <circle cx="12" cy="14" r="2" fill="#dc2626"/>
+          </svg>
+        </div>
+        <h1 class="loading-text">Ciné<span class="accent">Soul</span></h1>
+      </div>
+      <div class="loading-spinner"></div>
+    </div>
+    
+    <div id="root"></div>
+    
+    <script>
+      // Masquer l'écran de chargement une fois que React est chargé
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loadingScreen = document.getElementById('loading-screen');
+          if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.transition = 'opacity 0.5s ease-out';
+            setTimeout(function() {
+              loadingScreen.style.display = 'none';
+            }, 500);
+          }
+        }, 1000); // Afficher le logo pendant 1 seconde minimum
+      });
+    </script>
+    
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
