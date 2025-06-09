@@ -33,7 +33,7 @@ interface ExtendedComment extends Comment {
   replies?: ExtendedComment[]
 }
 
-const API_URL = "http://localhost:5000/api"
+const API_URL = "https://backapp-production-01be.up.railway.app/api"
 
 const CommentSection: React.FC<CommentSectionProps> = ({ movieId, onCommentAdded }) => {
   const [comment, setComment] = useState("")

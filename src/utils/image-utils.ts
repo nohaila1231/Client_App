@@ -1,5 +1,6 @@
-export const API_URL = "http://localhost:5000/api"
-export const SERVER_URL = "http://localhost:5000"
+export const API_URL = "https://backapp-production-01be.up.railway.app/api";
+
+export const SERVER_URL = "https://backapp-production-01be.up.railway.app"
 
 /**
  * Formate l'URL d'une image pour s'assurer qu'elle est complète et accessible

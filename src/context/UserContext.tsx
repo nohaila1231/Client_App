@@ -75,7 +75,8 @@ interface UserContextType {
   isStatsLoading: boolean
 }
 
-const API_URL = "http://localhost:5000/api"
+const API_URL = "https://backapp-production-01be.up.railway.app/api";
+
 
 const UserContext = createContext<UserContextType | undefined>(undefined)
 

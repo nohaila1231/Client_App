@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api"
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://backapp-production-01be.up.railway.app/api"
 
 // Configure axios
 axios.defaults.withCredentials = true

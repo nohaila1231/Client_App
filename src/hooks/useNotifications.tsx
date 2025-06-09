@@ -35,7 +35,8 @@ interface NotificationsResponse {
   has_prev: boolean
 }
 
-const API_URL = "http://localhost:5000/api"
+const API_URL = "https://backapp-production-01be.up.railway.app/api";
+
 
 export const useNotifications = () => {
   const [notifications, setNotifications] = useState<Notification[]>([])
